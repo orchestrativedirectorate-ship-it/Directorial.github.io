@@ -1,0 +1,109 @@
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { motion } from "framer-motion";
+
+export default function EduPlatform() {
+  const [page, setPage] = useState("home");
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6">
+      <Navbar setPage={setPage} />
+      {page === "home" && <Home />}
+      {page === "courses" && <Courses />}
+      {page === "ai" && <AISection />}
+      {page === "dashboard" && <Dashboard />}
+    </div>
+  );
+}
+
+function Navbar({ setPage }) {
+  return (
+    <div className="flex justify-between items-center mb-8">
+      <h1 className="text-2xl font-bold">EduMax AI</h1>
+      <div className="flex gap-4">
+        <Button onClick={() => setPage("home")}>Home</Button>
+        <Button onClick={() => setPage("courses")}>Courses</Button>
+        <Button onClick={() => setPage("ai")}>AI Tutor</Button>
+        <Button onClick={() => setPage("dashboard")}>Dashboard</Button>
+      </div>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <h2 className="text-4xl font-bold mb-4">Next-Gen Learning Platform</h2>
+      <p className="text-lg text-gray-300">
+        AI-powered personalized education, real-time analytics, and immersive learning.
+      </p>
+    </motion.div>
+  );
+}
+
+function Courses() {
+  const courses = [
+    { title: "AI & Machine Learning", level: "Advanced" },
+    { title: "Quantum Computing", level: "Expert" },
+    { title: "Full Stack Development", level: "Intermediate" },
+  ];
+
+  return (
+    <div className="grid md:grid-cols-3 gap-6">
+      {courses.map((course, i) => (
+        <Card key={i} className="bg-slate-700">
+          <CardContent>
+            <h3 className="text-xl font-bold">{course.title}</h3>
+            <p className="text-gray-300">{course.level}</p>
+            <Button className="mt-4">Start Learning</Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function AISection() {
+  const [input, setInput] = useState("");
+  const [response, setResponse] = useState("");
+
+  const handleAsk = () => {
+    setResponse("AI Response: " + input);
+  };
+
+  return (
+    <div>
+      <h2 className="text-2xl mb-4">AI Tutor</h2>
+      <Input
+        placeholder="Ask anything..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <Button className="mt-2" onClick={handleAsk}>
+        Ask AI
+      </Button>
+      <p className="mt-4 text-green-400">{response}</p>
+    </div>
+  );
+}
+
+function Dashboard() {
+  return (
+    <div className="grid md:grid-cols-2 gap-6">
+      <Card className="bg-slate-700">
+        <CardContent>
+          <h3 className="text-xl font-bold">Progress</h3>
+          <p>Track your learning journey with AI insights.</p>
+        </CardContent>
+      </Card>
+      <Card className="bg-slate-700">
+        <CardContent>
+          <h3 className="text-xl font-bold">Achievements</h3>
+          <p>Earn badges and certificates.</p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
