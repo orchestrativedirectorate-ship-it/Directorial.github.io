@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Directorial — Directing you deeper into mathematics and physics. Free lessons, notes, and visual derivations.">
+  <title>Directorial • Directing You Deeper</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('https://picsum.photos/id/1015/1920/1080') center/cover; }
+    .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: scale(1.05) translateY(-8px); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+    .math-bg { position: absolute; opacity: 0.03; pointer-events: none; }
+  </style>
+</head>
+<body class="bg-black text-white font-sans overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="text-3xl font-bold tracking-tighter">DIRECTORIAL</div>
+      <div class="hidden md:flex gap-10 text-sm uppercase tracking-widest">
+        <a href="#topics" class="hover:text-gray-400 transition">Topics</a>
+        <a href="#resources" class="hover:text-gray-400 transition">Resources</a>
+        <a href="#about" class="hover:text-gray-400 transition">About</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl">☰</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-bg h-screen flex items-center relative">
+    <div class="max-w-4xl mx-auto text-center px-6 z-10">
+      <h1 class="text-6xl md:text-8xl font-bold leading-none tracking-tighter mb-6">
+        DIRECTING YOU<br>DEEPER
+      </h1>
+      <p class="text-2xl md:text-3xl text-gray-300 mb-10">Mathematics • Physics • Visual Derivations</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#latest" class="px-10 py-5 bg-white text-black font-semibold text-lg rounded-full hover:bg-gray-200 transition">Watch Latest Lesson</a>
+        <a href="#topics" class="px-10 py-5 border border-white font-semibold text-lg rounded-full hover:bg-white/10 transition">Explore Topics</a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-4xl">↓</div>
+  </section>
+
+  <!-- LATEST LESSON -->
+  <section id="latest" class="py-24 bg-black border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-8 text-center">Latest Lesson</h2>
+      <div class="aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/6YQb1o4o0qE" title="Euler's Identity" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <p class="text-center mt-6 text-gray-400">Directing You Through the Most Beautiful Equation — Euler's Identity (e^iπ + 1 = 0)</p>
+    </div>
+  </section>
+
+  <!-- TOPICS GRID -->
+  <section id="topics" class="py-24 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16">Explore the Curriculum</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Add more cards as needed -->
+        <div class="card-hover bg-zinc-900 border border-white/10 rounded-3xl p-8">
+          <h3 class="text-2xl font-semibold mb-3">Linear Algebra for AI</h3>
+          <p class="text-gray-400">Matrices, eigenvalues, and embeddings explained visually.</p>
+        </div>
+        <div class="card-hover bg-zinc-900 border border-white/10 rounded-3xl p-8">
+          <h3 class="text-2xl font-semibold mb-3">Quantum Mechanics Essentials</h3>
+          <p class="text-gray-400">Wave functions, superposition, and the Schrödinger equation.</p>
+        </div>
+        <div class="card-hover bg-zinc-900 border border-white/10 rounded-3xl p-8">
+          <h3 class="text-2xl font-semibold mb-3">Calculus Mastery</h3>
+          <p class="text-gray-400">Derivatives, integrals, and optimization with real-time animations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources" class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16">Free Resources</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="#" class="block bg-zinc-900 border border-white/10 rounded-3xl p-8 hover:border-white/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Euler's Identity Cheat Sheet</h3>
+          <p class="text-gray-400">PDF • 2 pages</p>
+        </a>
+        <a href="#" class="block bg-zinc-900 border border-white/10 rounded-3xl p-8 hover:border-white/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Desmos Interactive Graphs</h3>
+          <p class="text-gray-400">Live unit circle & complex plane</p>
+        </a>
+        <a href="#" class="block bg-zinc-900 border border-white/10 rounded-3xl p-8 hover:border-white/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Problem Sets + Solutions</h3>
+          <p class="text-gray-400">Linear Algebra • Week 1–4</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 bg-zinc-950">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-10">Why Directorial?</h2>
+      <p class="text-xl text-gray-300 leading-relaxed">
+        I don’t just explain equations — I direct your attention to the beauty hidden within them. 
+        Every lesson is crafted like a cinematic experience: precise, visual, and unforgettable.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
+      © 2026 Directorial • Made for curious minds<br>
+      <a href="https://youtube.com/@yourchannel" class="hover:text-white">YouTube</a> • 
+      <a href="#" class="hover:text-white">X</a> • 
+      <a href="#" class="hover:text-white">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    // Tailwind script already loaded
+    document.documentElement.style.setProperty('--tw-ring-color', 'rgb(255 255 255 / 0.2)');
+
+    // Mobile menu (basic toggle)
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    mobileBtn.addEventListener('click', () => {
+      alert("Mobile menu would open here — add your links in a real dropdown if needed.");
+    });
+
+    // Simple form feedback example (expand later)
+    console.log("%cDirectorial site loaded successfully! Ready for GitHub Pages.", "color:#fff; font-size:14px");
+  </script>
+</body>
+</html>
