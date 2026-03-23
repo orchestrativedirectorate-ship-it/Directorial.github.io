@@ -1,204 +1,184 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Directorial — Directing you deeper into mathematics and physics with cinematic explanations, interactive tools, and free resources.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Directorial • Directing You Deeper</title>
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  
-  <!-- MathJax for real equations -->
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-    
-    .hero-bg { background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.95)), url('https://picsum.photos/id/1015/2000/1200') center/cover; }
-    .card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card:hover { transform: scale(1.04) translateY(-10px); box-shadow: 0 25px 50px -12px rgb(255 255 255 / 0.15); }
-    .nav-link { position: relative; }
-    .nav-link:after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: white; transition: width 0.3s; }
-    .nav-link:hover:after { width: 100%; }
-    .math-float { animation: float 6s ease-in-out infinite; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #fff; }
+    .nav-link:hover { text-decoration: underline; }
+    .card { transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(255,255,255,0.08); }
   </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="min-h-screen bg-black text-white">
 
-  <!-- NAVBAR - Khan + Brilliant style -->
-  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur-lg border-b border-white/10 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="text-3xl font-bold tracking-tighter">DIRECTORIAL</span>
-      </div>
-      
-      <div class="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest">
-        <a href="#topics" class="nav-link">Topics</a>
-        <a href="#resources" class="nav-link">Resources</a>
-        <a href="#about" class="nav-link">About</a>
-      </div>
+  <!-- HEADER: Logo + Search + Auth -->
+  <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-gray-800 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+      <!-- Logo -->
+      <div class="text-3xl font-bold tracking-tight">DIRECTORIAL</div>
 
-      <!-- Search Bar (live filter) -->
-      <div class="relative w-72 hidden md:block">
-        <input id="searchInput" type="text" placeholder="Search topics... (try quantum)" 
-               class="w-full bg-zinc-900 border border-white/20 rounded-full px-6 py-3 text-sm focus:outline-none focus:border-white/50">
+      <!-- Search (client-side filter example) -->
+      <div class="relative flex-1 max-w-md">
+        <input id="searchInput" type="text" placeholder="Search topics, resources..." 
+               class="w-full bg-gray-900 border border-gray-700 rounded-full py-3 px-5 pl-12 text-sm focus:outline-none focus:border-gray-500"/>
+        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
       </div>
 
-      <button id="mobileBtn" class="md:hidden text-3xl">☰</button>
-    </div>
-  </nav>
-
-  <!-- HERO - 3Blue1Brown cinematic feel -->
-  <section class="hero-bg h-screen flex items-center relative overflow-hidden">
-    <div class="max-w-5xl mx-auto text-center px-6 z-10">
-      <h1 class="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-6">
-        DIRECTING YOU<br>DEEPER
-      </h1>
-      <p class="text-2xl text-gray-300 mb-10">Mathematics • Physics • Visual Mastery</p>
-      
-      <div class="inline-block bg-white/10 backdrop-blur-md border border-white/30 rounded-2xl p-8 mb-12">
-        <p class="text-xl mb-4">Featured Equation</p>
-        <div id="heroEquation" class="text-4xl font-light">\( e^{i\pi} + 1 = 0 \)</div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-5 justify-center">
-        <a href="#latest" class="px-10 py-5 bg-white text-black font-semibold rounded-2xl text-lg hover:bg-gray-200 transition">Watch Latest Lesson</a>
-        <a href="#topics" class="px-10 py-5 border border-white rounded-2xl text-lg hover:bg-white/10 transition">Browse All Topics</a>
+      <!-- Sign In / Log In (placeholders) -->
+      <div class="flex items-center gap-4">
+        <button onclick="alert('Sign In feature coming soon — authentication planned via Firebase or similar')" 
+                class="px-6 py-2 bg-gray-800 hover:bg-gray-700 rounded-full text-sm font-medium transition">
+          Sign In
+        </button>
+        <button onclick="alert('Log In / Create account coming soon')" 
+                class="px-6 py-2 border border-white hover:bg-white/10 rounded-full text-sm font-medium transition">
+          Log In
+        </button>
       </div>
     </div>
+  </header>
 
-    <!-- Floating math symbols -->
-    <div class="absolute top-20 left-10 text-6xl opacity-10 math-float">∫</div>
-    <div class="absolute bottom-32 right-20 text-7xl opacity-10 math-float" style="animation-delay: 2s;">∇</div>
-  </section>
+  <main class="pt-28 pb-20">
 
-  <!-- LATEST LESSON -->
-  <section id="latest" class="py-20 bg-zinc-950">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-8">Continue Directing Yourself</h2>
-      <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/6YQb1o4o0qE" frameborder="0" allowfullscreen></iframe>
+    <!-- FEATURES OF SITE CONTENT / FEATURES OF SITE (combined showcase) -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Key Features of Directorial</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-4">Cinematic Visual Explanations</h3>
+          <p class="text-gray-400">Step-by-step derivations with animations and MathJax-rendered equations.</p>
+        </div>
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-4">Free High-Quality Resources</h3>
+          <p class="text-gray-400">Cheat sheets, interactive Desmos graphs, problem sets & solutions.</p>
+        </div>
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-4">Community-Driven Ideas</h3>
+          <p class="text-gray-400">Submit your concepts — featured recommendations & contributors highlighted.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TOPICS GRID - Searchable + Filterable (Brilliant + Khan style) -->
-  <section id="topics" class="py-24 bg-black">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex justify-between items-end mb-12">
-        <h2 class="text-5xl font-bold">Explore Topics</h2>
-        <div class="text-sm text-gray-400">Live search enabled</div>
-      </div>
-
-      <div id="topicsGrid" class="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- JS will populate these -->
-      </div>
-    </div>
-  </section>
-
-  <!-- RESOURCES - Tabs like Khan Academy -->
-  <section id="resources" class="py-24 bg-zinc-950">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl font-bold mb-12 text-center">Free Resources Library</h2>
-      
-      <div class="flex gap-3 justify-center mb-10 border-b border-white/10 pb-2">
-        <button onclick="switchTab(0)" class="tab-btn active px-8 py-3 rounded-full">Cheat Sheets</button>
-        <button onclick="switchTab(1)" class="tab-btn px-8 py-3 rounded-full">Interactive Tools</button>
-        <button onclick="switchTab(2)" class="tab-btn px-8 py-3 rounded-full">Problem Sets</button>
-      </div>
-
-      <div id="tabContent" class="grid md:grid-cols-3 gap-8">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-24 bg-black">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-bold mb-10">The Directorial Philosophy</h2>
-      <p class="text-xl leading-relaxed text-gray-300">
-        I don’t just teach equations. I direct your attention to the hidden beauty within them — one visual step at a time.
+    <!-- SHARING IDEA WITH DEV AND PROCESS -->
+    <section class="max-w-4xl mx-auto px-6 py-16 bg-gray-950/50 rounded-3xl mx-6">
+      <h2 class="text-4xl font-bold text-center mb-6">Share Your Idea or Project</h2>
+      <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto">
+        Describe your math/physics question, project idea, visualization concept or proof attempt.<br>
+        Submissions are sent securely to orchestrative.directorate@gmail.com.<br>
+        Selected ideas may be featured with full credit to you.
       </p>
-    </div>
-  </section>
 
-  <footer class="bg-black py-12 border-t border-white/10 text-center text-sm text-gray-500">
-    © 2026 Directorial • Built for curious minds who want to understand, not just memorize.
+      <!-- Formspree form linked to your endpoint + safety features -->
+      <form action="https://formspree.io/f/mbdzvzzq" method="POST" class="space-y-6">
+        <!-- Honeypot spam trap - invisible to humans, catches bots -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <input type="text" name="name" placeholder="Your Name / Handle / X Username" required 
+               class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 focus:outline-none focus:border-gray-500"/>
+
+        <input type="email" name="email" placeholder="Email (optional — for follow-up or credit)" 
+               class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 focus:outline-none focus:border-gray-500"/>
+
+        <textarea name="idea" rows="7" placeholder="Your detailed idea / project description (LaTeX/math welcome)" required 
+                  class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 focus:outline-none focus:border-gray-500"></textarea>
+
+        <!-- Optional secure file upload -->
+        <input type="file" name="attachment" accept=".pdf,.jpg,.png,.ipynb,.tex" 
+               class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 file:bg-gray-800 file:text-white file:border-0"/>
+
+        <button type="submit" class="w-full bg-white text-black py-4 rounded-xl font-semibold hover:bg-gray-200 transition">
+          Submit Securely
+        </button>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-8 text-center">
+        Protected by: honeypot field • rate limiting • ML-based spam detection • HTTPS encryption • Gmail malware scanning on attachments.
+      </p>
+    </section>
+
+    <!-- GOOD RECOMMENDATIONS BY USER (MANUAL) -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-4xl font-bold text-center mb-12">Featured User Recommendations</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Manually add/edit these cards when you receive good ideas -->
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <p class="text-lg italic mb-4">"Visualize quaternion rotations in 4D using Manim — would love a video on this!"</p>
+          <p class="text-right text-gray-400 mt-4">— @userhandle123</p>
+        </div>
+        <!-- Duplicate / edit blocks as you curate more -->
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <p class="text-lg italic mb-4">"Great suggestion: explain why π appears in quantum wave functions."</p>
+          <p class="text-right text-gray-400 mt-4">— @physicsfan2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- USERS WHO PROVIDED GOOD RECOMMENDATIONS (MANUAL) -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+      <h3 class="text-3xl font-bold text-center mb-10">Top Contributors & Idea Providers</h3>
+      <div class="flex flex-wrap justify-center gap-12">
+        <!-- Manually update when you feature people -->
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-4"></div>
+          <p class="font-medium">@userhandle123</p>
+          <p class="text-sm text-gray-500">3 featured ideas</p>
+        </div>
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-4"></div>
+          <p class="font-medium">@physicsfan2026</p>
+          <p class="text-sm text-gray-500">2 featured ideas</p>
+        </div>
+        <!-- Add more blocks as needed -->
+      </div>
+    </section>
+
+    <!-- USER RECOMMENDATION FORMS (YOUTUBE POLL STYLE) -->
+    <section class="max-w-4xl mx-auto px-6 py-16">
+      <h2 class="text-4xl font-bold text-center mb-8">Quick Poll: What Topic Next?</h2>
+      <p class="text-center text-gray-400 mb-10">Vote on the next video topic (results update live)</p>
+
+      <!-- Replace src with YOUR Google Form embed code or other poll service -->
+      <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 overflow-hidden">
+        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/viewform?embedded=true" 
+                width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
+          Loading poll...
+        </iframe>
+        <p class="text-sm text-gray-500 mt-6 text-center">
+          Powered by Google Forms • Unlimited votes • Easy to create your own poll
+        </p>
+      </div>
+    </section>
+
+    <!-- DEV DETAIL (placeholder - edit this section) -->
+    <section class="max-w-4xl mx-auto px-6 py-16 text-center">
+      <h2 class="text-4xl font-bold mb-8">Developer / Creator Details</h2>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+        Abhinav • Bengaluru, Karnataka, India<br>
+        Creator of Directorial — passionate about making mathematics and physics visually intuitive and cinematic.<br>
+        <!-- Add your links, photo, bio, socials here -->
+      </p>
+    </section>
+
+  </main>
+
+  <!-- DEVELOPMENT INFO -->
+  <footer class="bg-gray-950 py-12 text-center text-gray-500 border-t border-gray-800">
+    <p>Development Info: Built with HTML • Tailwind CSS • MathJax • Formspree • Hosted on GitHub Pages</p>
+    <p class="mt-2">© 2026 Abhinav / Directorial • All rights reserved</p>
   </footer>
 
   <script>
-    // Tailwind script
-    tailwind.config = { content: ["*"], theme: { extend: {} } }
-
-    // Sample Topics Data (easy to expand)
-    const topics = [
-      { title: "Linear Algebra for AI", desc: "Vectors, matrices, eigenvalues", level: "Intermediate", eq: "\\( A\\mathbf{v} = \\lambda\\mathbf{v} \\)" },
-      { title: "Quantum Mechanics", desc: "Wave functions & superposition", level: "Advanced", eq: "\\( i\\hbar \\frac{\\partial}{\\partial t}\\Psi = \\hat{H}\\Psi \\)" },
-      { title: "Calculus Mastery", desc: "Derivatives, integrals, optimization", level: "Beginner", eq: "\\( \\frac{d}{dx}e^x = e^x \\)" },
-      { title: "Special Relativity", desc: "Time dilation & spacetime", level: "Intermediate", eq: "\\( E = mc^2 \\)" }
-    ]
-
-    // Render Topics
-    function renderTopics(filteredTopics) {
-      const grid = document.getElementById('topicsGrid')
-      grid.innerHTML = ''
-      filteredTopics.forEach(t => {
-        const card = document.createElement('div')
-        card.className = 'card bg-zinc-900 border border-white/10 rounded-3xl p-8 group'
-        card.innerHTML = `
-          <div class="text-xs uppercase tracking-widest mb-2 text-emerald-400">${t.level}</div>
-          <h3 class="text-2xl font-semibold mb-3">${t.title}</h3>
-          <p class="text-gray-400 mb-6">${t.desc}</p>
-          <div class="text-3xl font-light text-white/70 mb-6">${t.eq}</div>
-          <a href="#" class="text-sm flex items-center gap-2 group-hover:gap-3 transition">Start Lesson <span class="text-xl">→</span></a>
-        `
-        grid.appendChild(card)
-      })
-    }
-
-    // Live Search
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase()
-      const filtered = topics.filter(t => 
-        t.title.toLowerCase().includes(term) || t.desc.toLowerCase().includes(term)
-      )
-      renderTopics(filtered.length ? filtered : topics)
-    })
-
-    // Initial render
-    renderTopics(topics)
-
-    // Simple Tab System
-    let currentTab = 0
-    function switchTab(n) {
-      currentTab = n
-      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', i === n)
-        btn.classList.toggle('bg-white', i === n)
-        btn.classList.toggle('text-black', i === n)
-      })
-      
-      const content = document.getElementById('tabContent')
-      if (n === 0) {
-        content.innerHTML = `<div class="col-span-3 text-center text-2xl py-12">Euler Identity Cheat Sheet • Maxwell Equations PDF • Linear Algebra Summary</div>`
-      } else if (n === 1) {
-        content.innerHTML = `<iframe class="w-full aspect-video rounded-3xl" src="https://www.desmos.com/calculator/0k4w3zq5f2?embed" frameborder="0"></iframe>`
-      } else {
-        content.innerHTML = `<div class="col-span-3 text-center text-2xl py-12">Problem Sets with Solutions (PDFs ready to download)</div>`
-      }
-    }
-    switchTab(0) // default
-
-    // Mobile menu (expandable)
-    document.getElementById('mobileBtn').addEventListener('click', () => {
-      alert("Mobile menu would open here (you can expand this with a real dropdown later)")
-    })
-
-    // MathJax will auto-render any \( \) or \[ \] equations
-    console.log("%c✅ Directorial Advanced Site Loaded! Search, tabs, MathJax, and animations are working.", "color:#22c55e; font-size:16px")
+    // Simple live search filter (expand as you add more content)
+    document.getElementById('searchInput')?.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase();
+      // Example: you can hide/show sections or cards here in future
+      console.log("Searching:", term);
+    });
   </script>
 </body>
 </html>
