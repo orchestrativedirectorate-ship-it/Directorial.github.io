@@ -9,80 +9,159 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #fff; }
-    .course-card { transition: all 0.4s ease; }
-    .course-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgb(255 255 255 / 0.15); }
+    .nav-link:hover { text-decoration: underline; }
+    .card { transition: all 0.4s ease; }
+    .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgb(255 255 255 / 0.15); }
     .modal { animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white">
 
-  <!-- HEADER -->
+  <!-- HEADER: Logo + Search + Auth -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-gray-800 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4">
       <div class="text-3xl font-bold tracking-tight">DIRECTORIAL</div>
-      
-      <div class="flex items-center gap-6">
-        <button onclick="alert('Sign In coming soon')" class="px-6 py-2 bg-gray-800 rounded-full text-sm">Sign In</button>
+
+      <div class="relative flex-1 max-w-md">
+        <input id="searchInput" type="text" placeholder="Search topics or resources..." 
+               class="w-full bg-gray-900 border border-gray-700 rounded-full py-3 px-5 pl-12 text-sm focus:outline-none focus:border-gray-500"/>
+        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="alert('Sign In feature coming soon')" class="px-6 py-2 bg-gray-800 rounded-full text-sm">Sign In</button>
         <button onclick="alert('Log In coming soon')" class="px-6 py-2 border border-white rounded-full text-sm">Log In</button>
       </div>
     </div>
   </header>
 
-  <main class="pt-24">
+  <main class="pt-28 pb-20">
+
+    <!-- FEATURES -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Key Features of Directorial</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-4">Cinematic Visual Explanations</h3>
+          <p class="text-gray-400">Step-by-step derivations with animations and MathJax-rendered equations.</p>
+        </div>
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-4">Free High-Quality Resources</h3>
+          <p class="text-gray-400">Cheat sheets, interactive Desmos graphs, problem sets & solutions.</p>
+        </div>
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-4">Community-Driven Ideas</h3>
+          <p class="text-gray-400">Submit your concepts — featured recommendations & contributors highlighted.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- COURSES SECTION -->
     <section class="max-w-7xl mx-auto px-6 py-20">
       <h2 class="text-5xl font-bold text-center mb-4">Available Courses</h2>
-      <p class="text-center text-gray-400 mb-12">Click “Join Course” to start learning with notes, videos & summaries</p>
+      <p class="text-center text-gray-400 mb-12">Click “Join Course” to access notes, videos, summaries & more</p>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Course 1 -->
-        <div class="course-card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
+        <div class="card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
           <h3 class="text-2xl font-semibold mb-3">Linear Algebra for AI & Beyond</h3>
-          <p class="text-gray-400 mb-6">Master vectors, matrices, eigenvalues visually</p>
+          <p class="text-gray-400 mb-6">Vectors, matrices, eigenvalues visually explained</p>
           <button onclick="openCourse(1)" class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Join Course</button>
         </div>
 
-        <!-- Course 2 -->
-        <div class="course-card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
+        <div class="card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
           <h3 class="text-2xl font-semibold mb-3">Introduction to Quantum Physics</h3>
-          <p class="text-gray-400 mb-6">Superposition, entanglement & wave functions made simple</p>
+          <p class="text-gray-400 mb-6">Superposition, entanglement & wave functions</p>
           <button onclick="openCourse(2)" class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Join Course</button>
         </div>
 
-        <!-- Course 3 -->
-        <div class="course-card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
+        <div class="card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
           <h3 class="text-2xl font-semibold mb-3">Green Chemistry & Sustainability</h3>
-          <p class="text-gray-400 mb-6">12 principles that are changing the future of chemistry</p>
+          <p class="text-gray-400 mb-6">12 principles changing modern chemistry</p>
           <button onclick="openCourse(3)" class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Join Course</button>
         </div>
 
-        <!-- Course 4 -->
-        <div class="course-card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
+        <div class="card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
           <h3 class="text-2xl font-semibold mb-3">Key Moments in USA History</h3>
-          <p class="text-gray-400 mb-6">From colonies to world power in one clear story</p>
+          <p class="text-gray-400 mb-6">From colonies to superpower – clear overview</p>
           <button onclick="openCourse(4)" class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Join Course</button>
         </div>
 
-        <!-- Course 5 -->
-        <div class="course-card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
+        <div class="card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
           <h3 class="text-2xl font-semibold mb-3">HTML & Web Development Basics</h3>
           <p class="text-gray-400 mb-6">Build your first website from scratch</p>
           <button onclick="openCourse(5)" class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Join Course</button>
         </div>
 
-        <!-- Course 6 -->
-        <div class="course-card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
+        <div class="card bg-zinc-900 border border-gray-800 rounded-3xl p-8">
           <h3 class="text-2xl font-semibold mb-3">Basics of Neurology & Brain Science</h3>
-          <p class="text-gray-400 mb-6">How the human brain actually works</p>
+          <p class="text-gray-400 mb-6">How the human brain works – intro level</p>
           <button onclick="openCourse(6)" class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Join Course</button>
         </div>
       </div>
     </section>
 
-    <!-- All other sections (Features, Idea Submission, Recommendations, Poll, Dev Detail) remain exactly as in the previous version -->
-    <!-- (I kept them short here for brevity — just paste your previous sections below if you want) -->
+    <!-- SHARING IDEA FORM -->
+    <section class="max-w-4xl mx-auto px-6 py-16 bg-gray-950/50 rounded-3xl mx-6">
+      <h2 class="text-4xl font-bold text-center mb-6">Share Your Idea or Project</h2>
+      <p class="text-center text-gray-400 mb-10">Submissions sent to orchestrative.directorate@gmail.com<br>Selected ideas may be featured with credit.</p>
+
+      <form action="https://formspree.io/f/mbdzvzzq" method="POST" class="space-y-6">
+        <input type="text" name="_gotcha" style="display:none" />
+        <input type="text" name="name" placeholder="Name / Handle" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 focus:outline-none focus:border-gray-500"/>
+        <input type="email" name="email" placeholder="Email (optional)" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 focus:outline-none focus:border-gray-500"/>
+        <textarea name="idea" rows="7" placeholder="Your idea / project (LaTeX OK)" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 focus:outline-none focus:border-gray-500"></textarea>
+        <input type="file" name="attachment" accept=".pdf,.jpg,.png,.ipynb" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-5 py-4 file:bg-gray-800 file:text-white file:border-0"/>
+        <button type="submit" class="w-full bg-white text-black py-4 rounded-xl font-semibold hover:bg-gray-200 transition">Submit Securely</button>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-8 text-center">
+        Protected by honeypot • rate limiting • ML spam detection • HTTPS • Gmail malware scanning
+      </p>
+    </section>
+
+    <!-- FEATURED RECOMMENDATIONS (MANUAL) -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-4xl font-bold text-center mb-12">Featured User Recommendations</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+          <p class="text-lg italic mb-4">"Visualize quaternion rotations in 4D using Manim!"</p>
+          <p class="text-right text-gray-400 mt-4">— @userhandle123</p>
+        </div>
+        <!-- Add more manually -->
+      </div>
+    </section>
+
+    <!-- TOP CONTRIBUTORS (MANUAL) -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+      <h3 class="text-3xl font-bold text-center mb-10">Top Contributors</h3>
+      <div class="flex flex-wrap justify-center gap-12">
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-4"></div>
+          <p class="font-medium">@userhandle123</p>
+          <p class="text-sm text-gray-500">3 featured ideas</p>
+        </div>
+        <!-- Add more manually -->
+      </div>
+    </section>
+
+    <!-- POLL -->
+    <section class="max-w-4xl mx-auto px-6 py-16">
+      <h2 class="text-4xl font-bold text-center mb-8">Quick Poll: Next Topic?</h2>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 overflow-hidden">
+        <!-- Replace src with your Google Form embed -->
+        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </section>
+
+    <!-- DEV DETAIL -->
+    <section class="max-w-4xl mx-auto px-6 py-16 text-center">
+      <h2 class="text-4xl font-bold mb-8">Developer / Creator Details</h2>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+        Abhinav • Bengaluru, Karnataka, India<br>
+        Creator of Directorial — passionate about visual math & physics education.
+      </p>
+    </section>
 
   </main>
 
@@ -94,63 +173,84 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
+  <footer class="bg-gray-950 py-12 text-center text-gray-500 border-t border-gray-800">
+    <p>Development Info: Built with HTML • Tailwind CSS • MathJax • Formspree • Hosted on GitHub Pages</p>
+    <p class="mt-2">© 2026 Abhinav / Directorial</p>
+  </footer>
+
   <script>
+    // Course Modal Data
     function openCourse(id) {
       let content = '';
-      
-      if (id === 1) { // Linear Algebra
+      if (id === 1) {
         content = `
           <h2 class="text-4xl font-bold mb-6">Linear Algebra for AI & Beyond</h2>
           <iframe width="100%" height="420" src="https://www.youtube.com/embed/XGAwzmrt61A" frameborder="0" allowfullscreen></iframe>
-          <h3 class="text-2xl mt-10 mb-4">What You'll Learn</h3>
+          <h3 class="text-2xl mt-10 mb-4">Summary & Key Notes</h3>
           <ul class="list-disc pl-6 space-y-3 text-gray-300">
-            <li>Vectors & matrices explained visually</li>
-            <li>Eigenvalues and eigenvectors</li>
-            <li>How linear algebra powers AI models</li>
-            <li>Real-world applications in machine learning</li>
+            <li>Vectors & linear combinations</li>
+            <li>Matrix operations & transformations</li>
+            <li>Eigenvalues/eigenvectors: \\( A\\mathbf{v} = \\lambda\\mathbf{v} \\)</li>
+            <li>Applications in AI (embeddings, PCA)</li>
           </ul>
-          <a href="#" class="block mt-8 bg-white text-black text-center py-4 rounded-2xl font-semibold">Download Full Notes (PDF)</a>
+          <p class="mt-6 text-gray-400">Tip: Practice with 3Blue1Brown visuals & Khan Academy exercises.</p>
         `;
-      }
-      else if (id === 2) { // Quantum Physics
+      } else if (id === 2) {
         content = `
           <h2 class="text-4xl font-bold mb-6">Introduction to Quantum Physics</h2>
           <iframe width="100%" height="420" src="https://www.youtube.com/embed/WW1tMuiCES8" frameborder="0" allowfullscreen></iframe>
-          <h3 class="text-2xl mt-10 mb-4">Key Concepts Covered</h3>
+          <h3 class="text-2xl mt-10 mb-4">Summary & Key Notes</h3>
           <ul class="list-disc pl-6 space-y-3 text-gray-300">
-            <li>Superposition & wave-particle duality</li>
-            <li>Schrödinger's cat explained</li>
-            <li>Entanglement and uncertainty principle</li>
+            <li>Wave-particle duality</li>
+            <li>Superposition: \\( |\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle \\)</li>
+            <li>Entanglement & uncertainty principle</li>
           </ul>
-          <a href="#" class="block mt-8 bg-white text-black text-center py-4 rounded-2xl font-semibold">Download Summary Notes</a>
+          <p class="mt-6 text-gray-400">Tip: Watch Veritasium & PBS Space Time for intuition.</p>
         `;
-      }
-      else if (id === 3) { // Green Chemistry
+      } else if (id === 3) {
         content = `
-          <h2 class="text-4xl font-bold mb-6">Green Chemistry & Sustainable Materials</h2>
+          <h2 class="text-4xl font-bold mb-6">Green Chemistry & Sustainability</h2>
           <iframe width="100%" height="420" src="https://www.youtube.com/embed/PvdBO5e0h0s" frameborder="0" allowfullscreen></iframe>
-          <h3 class="text-2xl mt-10 mb-4">12 Principles of Green Chemistry</h3>
-          <p class="text-gray-400">Learn how chemistry can be environmentally friendly and sustainable.</p>
+          <h3 class="text-2xl mt-10 mb-4">Summary & Key Notes</h3>
+          <ul class="list-disc pl-6 space-y-3 text-gray-300">
+            <li>12 Principles of Green Chemistry</li>
+            <li>Atom economy & waste prevention</li>
+            <li>Renewable feedstocks & safer solvents</li>
+          </ul>
         `;
-      }
-      else if (id === 4) { // USA History
+      } else if (id === 4) {
         content = `
           <h2 class="text-4xl font-bold mb-6">Key Moments in USA History</h2>
           <iframe width="100%" height="420" src="https://www.youtube.com/embed/5Pm_s2wzxo0" frameborder="0" allowfullscreen></iframe>
-          <p class="mt-8 text-gray-300">From 13 colonies to world superpower in one clear story.</p>
+          <h3 class="text-2xl mt-10 mb-4">Summary & Key Notes</h3>
+          <ul class="list-disc pl-6 space-y-3 text-gray-300">
+            <li>American Revolution & Constitution</li>
+            <li>Civil War & Reconstruction</li>
+            <li>World Wars & Civil Rights Movement</li>
+          </ul>
         `;
-      }
-      else if (id === 5) { // HTML
+      } else if (id === 5) {
         content = `
           <h2 class="text-4xl font-bold mb-6">HTML & Web Development Basics</h2>
           <iframe width="100%" height="420" src="https://www.youtube.com/embed/7pNNsbHP9Zo" frameborder="0" allowfullscreen></iframe>
+          <h3 class="text-2xl mt-10 mb-4">Summary & Key Notes</h3>
+          <ul class="list-disc pl-6 space-y-3 text-gray-300">
+            <li>HTML structure: tags, attributes</li>
+            <li>Semantic elements (header, nav, section)</li>
+            <li>Forms & accessibility basics</li>
+          </ul>
         `;
-      }
-      else if (id === 6) { // Neurology
+      } else if (id === 6) {
         content = `
           <h2 class="text-4xl font-bold mb-6">Basics of Neurology & Brain Science</h2>
           <iframe width="100%" height="420" src="https://www.youtube.com/embed/ba-HMvDn_vU" frameborder="0" allowfullscreen></iframe>
-          <p class="mt-8 text-gray-300">MIT-level introduction to how the human brain works.</p>
+          <h3 class="text-2xl mt-10 mb-4">Summary & Key Notes</h3>
+          <ul class="list-disc pl-6 space-y-3 text-gray-300">
+            <li>Neurons & synapses</li>
+            <li>Brain regions (cortex, limbic system)</li>
+            <li>Neuroplasticity basics</li>
+          </ul>
         `;
       }
 
@@ -161,6 +261,27 @@
     function closeCourseModal() {
       document.getElementById('courseModal').classList.add('hidden');
     }
+
+    // Live search placeholder
+    document.getElementById('searchInput')?.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase();
+      console.log("Search term:", term); // Expand to filter cards later
+    });
   </script>
+
+  <!-- COURSE MODAL CONTAINER -->
+  <div id="courseModal" class="hidden fixed inset-0 bg-black/95 z-[100] overflow-y-auto">
+    <div class="max-w-4xl mx-auto p-6 pt-20">
+      <button onclick="closeCourseModal()" class="float-right text-5xl mb-8 text-white">&times;</button>
+      <div id="modalContent" class="bg-zinc-900 rounded-3xl p-10"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-950 py-12 text-center text-gray-500 border-t border-gray-800">
+    <p>Development Info: Built with HTML • Tailwind CSS • MathJax • Formspree • Hosted on GitHub Pages</p>
+    <p class="mt-2">© 2026 Abhinav / Directorial • Bengaluru, India</p>
+  </footer>
+
 </body>
 </html>
